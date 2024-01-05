@@ -111,36 +111,11 @@ void PrintListE (List ls){
 }
 
 void DeleteAllNodes(List *ls) {
-while (!is_EmptyLE(*ls)) {
-	DeleteAtEnd(ls);
-}
-}
-
-void agregarHorario(ListaHorarios *lista, Horario nuevoHorario){
-	NodoHorario *nuevoNodo = (NodoHorario*)malloc(sizeof(NodoHorario));
-	nuevoNodo -> h = nuevoHorario;
-	nuevoNodo -> next = lista -> start;
-	lista -> start = nuevoNodo;
-}
-
-void mostrarHorario(ListaHorarios *lista) {
-	NodoHorario *actual = lista -> start;
-	while (actual != NULL) {
-		printf("Dia: %s, Hora de Inicio: %s, Hora de Fin: %s, Materia: %s, Profesor: %s\n", actual->h.dia, actual->h.horaInicio, actual->h.horaFin, actual->h.materia,
-				actual->h.profesor);
-	actual = actual -> next;
+	while (!is_EmptyLE(*ls)) {
+		DeleteAtEnd(ls);
 	}
 }
 
-void liberarLista(ListaHorarios *lista) {
-	NodoHorario *actual = lista -> start;
-	while (actual != NULL) {
-		NodoHorario *siguiente = actual -> next;
-		free(actual);
-		actual = siguiente;
-	}
-	lista -> start = NULL;
-}
 
 NodeL *searchByNodeNumber(List ls, int nodeNumber) {
 	NodeL *aux = ls.start;
