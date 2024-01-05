@@ -4,17 +4,16 @@
 //_______________________________________________________
 
 typedef struct element{
-	char dia[26];
-	char horaInicio[26];
-	char horaFin[26];
-	char materia[50];
-	char profesor[50];
+	char horaInicio[6];
+	char horaFin[6];
+	char materia[51];
+	char profesor[51];
 	char grupo[5];
-	
+
 	int tiempo_i;
 	int tiempo_f;
 
-	char *cdg;
+	int cdg;
 	char *nombre;
 }element;
 

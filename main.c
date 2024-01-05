@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-login_admin(Grupo *grupos);
+void login_admin(Grupo *grupos);
 // 1 agregar horario
 // 2 modificar
 // 3 eliminar
@@ -14,12 +14,12 @@ login_admin(Grupo *grupos);
 int main(int argn, char *args[]){
     Grupo _2CV[5];
 
+    printf("Iniciando grupos...\n");
     for(int k = 0; k < 5; k++){
         create(&_2CV[k]);
     }
+    printf("Grupos creados.\n");
 
     if (1)
         login_admin(_2CV);
-    else
-        login_alumno();
 }

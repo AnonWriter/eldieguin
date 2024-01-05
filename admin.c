@@ -4,30 +4,61 @@
 #include <string.h>
 
 
-login_admin(Grupo *grupos){
+void login_admin(Grupo *grupos);
+void agregarHorario(Grupo *grupos, horario h);
+
+void limpiarBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
+}
+
+void login_admin(Grupo *grupos){
+    printf("*********[MENU]***********\n");
+    printf("1) Agregar un horario.\n");
+    printf("2) Modificar un horario\n");
+    printf("3) Eliminar un horario\n");
+    printf("4) Consultar horarios\n");
+    printf("5) Salir\n");
+    printf("Seleccione una opción: ");
+
     int opc;
     scanf("%d", &opc);
+    limpiarBuffer();
 
     switch (opc)
     {
     case 1:
-        int elegir_grupo;
-        scanf("%d", &elegir_grupo);
         // validar que existe el grupo
-        printf("Ingrese los datos: ");
-
         horario nuevo_horario;
 
+        char materia[51];
+        char horaInicio[6];
+        char horaFin[6];
+        char profesor[51];
+        char grupo[6];
+
         printf("Nombre de la materia: ");
-        fgets(&nuevo_horario.materia, sizeof(nuevo_horario.materia), stdin);
-        printf("Hora final: ");
-        fgets(&nuevo_horario.horaFin, sizeof(nuevo_horario.horaFin), stdin);
+        fgets(materia, 51, stdin);
+
         printf("Hora inicio: ");
-        fgets(&nuevo_horario.horaInicio, sizeof(nuevo_horario.horaInicio), stdin);
+        fgets(horaInicio, 6, stdin);
+
+        printf("Hora final: ");
+        limpiarBuffer();
+        fgets(horaFin, 6, stdin);
+
         printf("Nombre del profesor : ");
-        fgets(&nuevo_horario.profesor, sizeof(nuevo_horario.profesor), stdin);
+        limpiarBuffer();
+        fgets(profesor, 51, stdin);
+
         printf("Grupo: ");
-        fgets(&nuevo_horario.grupo, sizeof(nuevo_horario.grupo), stdin);
+        fgets(grupo, 5, stdin);
+
+        strcpy(nuevo_horario.materia, materia);
+        strcpy(nuevo_horario.horaFin, horaFin);
+        strcpy(nuevo_horario.horaInicio, horaInicio);
+        strcpy(nuevo_horario.profesor, profesor);
+        strcpy(nuevo_horario.grupo, grupo);
 
         agregarHorario(grupos, nuevo_horario);
         break;
@@ -35,8 +66,6 @@ login_admin(Grupo *grupos){
     default:
         break;
     }
-
-    return 0;
 }
 
 void agregarHorario(Grupo *grupos, horario h){
@@ -77,7 +106,8 @@ void agregarHorario(Grupo *grupos, horario h){
     h.tiempo_i = tiempo_i;
     h.tiempo_f = tiempo_f;
 
-    char s_num_grupo[1] = h.grupo[4];
+    char s_num_grupo[1];
+    s_num_grupo[0] = h.grupo[4];
     int num_grupo = atoi(s_num_grupo);
 
     if (boolean == 0){
