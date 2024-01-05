@@ -8,6 +8,8 @@
         char horaFin[26];
         char materia[50];
         char profesor[50];
+		char *cdg;
+		char *nombre;
 	}element;
 	typedef element Horario;
 	
